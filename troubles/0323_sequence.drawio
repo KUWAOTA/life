@@ -1,0 +1,200 @@
+<mxGraphModel adaptiveColors="auto">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+
+    <!-- Phase 1 Header -->
+    <mxCell id="p1" value="Phase 1: 土俵の奪い合い" style="text;html=1;fontSize=16;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;rounded=1;whiteSpace=wrap;align=center;" vertex="1" parent="1">
+      <mxGeometry x="160" y="0" width="480" height="40" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 1 -->
+    <mxCell id="m1" value="萌子「お湯で入れてほしい」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="420" y="60" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="m1n" value="要望の提示" style="text;html=1;fontSize=11;fontColor=#999999;align=left;" vertex="1" parent="1">
+      <mxGeometry x="690" y="65" width="120" height="30" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 2 -->
+    <mxCell id="t2" value="拓磨「水入れOKって書いてあるやん」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="120" y="120" width="280" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="t2n" value="意図: 事実で応答" style="text;html=1;fontSize=11;fontColor=#999999;align=right;" vertex="1" parent="1">
+      <mxGeometry x="-10" y="125" width="120" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="t2r" value="⚡ 萌子の受信:&#xa;「私の要望は非合理ということ？」" style="text;html=1;fontSize=11;fontColor=#cc0000;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="420" y="115" width="250" height="40" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 3 -->
+    <mxCell id="m3" value="萌子「水道水で作るん違うくない」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="420" y="180" width="260" height="40" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 4 -->
+    <mxCell id="t4" value="拓磨「それは萌子のこだわりやなあ」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="120" y="240" width="280" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="t4n" value="意図: 客観的に分類" style="text;html=1;fontSize=11;fontColor=#999999;align=right;" vertex="1" parent="1">
+      <mxGeometry x="-10" y="245" width="120" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="t4r" value="⚡ 萌子の受信:&#xa;「感覚を個人の偏りに格下げされた」" style="text;html=1;fontSize=11;fontColor=#cc0000;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="420" y="235" width="260" height="40" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 5 -->
+    <mxCell id="m5" value="萌子「調べてみようや」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="420" y="300" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="m5n" value="防衛反応: 外部データで&#xa;正当性を回復したい" style="text;html=1;fontSize=11;fontColor=#cc0000;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="690" y="295" width="160" height="40" as="geometry"/>
+    </mxCell>
+
+    <!-- Phase 2 Header -->
+    <mxCell id="p2" value="Phase 2: 一方的な判決" style="text;html=1;fontSize=16;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;rounded=1;whiteSpace=wrap;align=center;" vertex="1" parent="1">
+      <mxGeometry x="160" y="370" width="480" height="40" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 6 -->
+    <mxCell id="t6" value="拓磨「明確に私が折れます」&#xa;「折れたことを覚えておいてください」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="120" y="430" width="280" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="t6n" value="意図: 最適解を提示" style="text;html=1;fontSize=11;fontColor=#999999;align=right;" vertex="1" parent="1">
+      <mxGeometry x="-10" y="440" width="120" height="30" as="geometry"/>
+    </mxCell>
+    <mxCell id="t6r" value="⚡ 萌子の受信:&#xa;「判決が出た。私は参加していない」&#xa;「貸しにされた」" style="text;html=1;fontSize=11;fontColor=#cc0000;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="420" y="425" width="260" height="55" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 7 -->
+    <mxCell id="m7" value="萌子「拓磨が作るときは水でいいやん。&#xa;時給換算2分にしといて」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="420" y="510" width="260" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="m7n" value="別の妥協案を提示" style="text;html=1;fontSize=11;fontColor=#999999;align=left;" vertex="1" parent="1">
+      <mxGeometry x="690" y="520" width="140" height="30" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 8 -->
+    <mxCell id="t8" value="拓磨「それは感情的に出した結論。&#xa;萌子の本音ではない」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="120" y="580" width="280" height="50" as="geometry"/>
+    </mxCell>
+    <mxCell id="t8n" value="意図: 萌子が損する&#xa;提案を止めたい" style="text;html=1;fontSize=11;fontColor=#999999;align=right;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="-10" y="585" width="120" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="t8r" value="⚡ 萌子の受信:&#xa;「私の言葉が無効化された」&#xa;「自分の提案を自分で決める権利もない」" style="text;html=1;fontSize=11;fontColor=#cc0000;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="420" y="575" width="280" height="55" as="geometry"/>
+    </mxCell>
+
+    <!-- Phase 3 Header -->
+    <mxCell id="p3" value="Phase 3: 通信の崩壊" style="text;html=1;fontSize=16;fontStyle=1;fillColor=#f8cecc;strokeColor=#b85450;rounded=1;whiteSpace=wrap;align=center;" vertex="1" parent="1">
+      <mxGeometry x="160" y="660" width="480" height="40" as="geometry"/>
+    </mxCell>
+
+    <!-- Cry -->
+    <mxCell id="cry" value="萌子 泣き出す" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="420" y="720" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="cryn" value="感情的洪水状態&#xa;前頭前皮質(分析)↓↓&#xa;扁桃体(脅威検出)↑↑" style="text;html=1;fontSize=11;fontColor=#996185;align=left;whiteSpace=wrap;fontStyle=2;" vertex="1" parent="1">
+      <mxGeometry x="690" y="710" width="170" height="55" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 9 -->
+    <mxCell id="t9" value="拓磨「合わせれる側が合わせるしかない」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="120" y="790" width="280" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="t9r" value="⚡ 萌子の受信: 圧力として受信&#xa;（分析的入力を処理できない状態）" style="text;html=1;fontSize=11;fontColor=#cc0000;align=left;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="420" y="785" width="280" height="40" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 10 -->
+    <mxCell id="t10" value="拓磨「何が問題だった、口調」" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="120" y="860" width="280" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="t10n" value="意図: 普段通りの&#xa;振り返りの問いかけ" style="text;html=1;fontSize=11;fontColor=#999999;align=right;whiteSpace=wrap;" vertex="1" parent="1">
+      <mxGeometry x="-10" y="860" width="120" height="40" as="geometry"/>
+    </mxCell>
+
+    <!-- Key insight box -->
+    <mxCell id="box" value="同じ言葉が状態によって意味が変わる&#xa;&#xa;【平常時】「何が問題だった？」&#xa; → 一緒に振り返ろう（協働）&#xa;&#xa;【洪水時】「何が問題だった？」&#xa; → 正解を答えろ（試験）&#xa; → 答えられない = この対話は終わらない（脅威）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;align=left;spacingLeft=10;spacingRight=10;" vertex="1" parent="1">
+      <mxGeometry x="420" y="840" width="330" height="140" as="geometry"/>
+    </mxCell>
+
+    <!-- Arrow from t10 to box -->
+    <mxCell id="a1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#d6b656;strokeWidth=2;" edge="1" source="t10" target="box" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Turn 11 -->
+    <mxCell id="m11" value="萌子「わからない」→ キッチンへ離脱" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6d0de;strokeColor=#996185;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+      <mxGeometry x="270" y="1010" width="260" height="40" as="geometry"/>
+    </mxCell>
+    <mxCell id="m11n" value="処理できない状態から&#xa;自分を守るための離脱&#xa;（安全確保行動）" style="text;html=1;fontSize=11;fontColor=#996185;align=left;whiteSpace=wrap;fontStyle=2;" vertex="1" parent="1">
+      <mxGeometry x="540" y="1005" width="180" height="50" as="geometry"/>
+    </mxCell>
+
+    <!-- Arrows for flow -->
+    <mxCell id="f1" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="m1" target="t2" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="f2" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="t2" target="m3" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="f3" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="m3" target="t4" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="f4" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="t4" target="m5" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="f5" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="m5" target="t6" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="f6" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="t6" target="m7" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="f7" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="m7" target="t8" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="f8" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="t8" target="cry" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="f9" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="cry" target="t9" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="f10" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="t9" target="t10" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="f11" style="edgeStyle=orthogonalEdgeStyle;strokeColor=#999999;strokeWidth=1;dashed=1;" edge="1" source="box" target="m11" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+
+    <!-- Legend -->
+    <mxCell id="leg" value="凡例" style="text;html=1;fontSize=12;fontStyle=5;align=left;" vertex="1" parent="1">
+      <mxGeometry x="0" y="1080" width="60" height="25" as="geometry"/>
+    </mxCell>
+    <mxCell id="lg1" value="" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+      <mxGeometry x="0" y="1110" width="20" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="lg1t" value="拓磨の発言" style="text;html=1;fontSize=11;align=left;" vertex="1" parent="1">
+      <mxGeometry x="25" y="1110" width="80" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="lg2" value="" style="rounded=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+      <mxGeometry x="120" y="1110" width="20" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="lg2t" value="萌子の発言" style="text;html=1;fontSize=11;align=left;" vertex="1" parent="1">
+      <mxGeometry x="145" y="1110" width="80" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="lg3" value="" style="rounded=1;fillColor=#e6d0de;strokeColor=#996185;" vertex="1" parent="1">
+      <mxGeometry x="240" y="1110" width="20" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="lg3t" value="非言語的行動" style="text;html=1;fontSize=11;align=left;" vertex="1" parent="1">
+      <mxGeometry x="265" y="1110" width="90" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="lg4" value="⚡ 赤字" style="text;html=1;fontSize=11;fontColor=#cc0000;align=left;" vertex="1" parent="1">
+      <mxGeometry x="370" y="1110" width="50" height="20" as="geometry"/>
+    </mxCell>
+    <mxCell id="lg4t" value="= 受信側が実際に受け取った意味" style="text;html=1;fontSize=11;align=left;" vertex="1" parent="1">
+      <mxGeometry x="420" y="1110" width="220" height="20" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>

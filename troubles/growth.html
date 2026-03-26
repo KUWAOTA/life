@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拓磨 × 萌子｜対話の成長記録</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      background: #0f0f13;
+      color: #e8e8ec;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    header { text-align: center; margin-bottom: 60px; }
+    header h1 { font-size: 2rem; font-weight: 300; letter-spacing: 0.1em; color: #fff; }
+    header p { margin-top: 8px; font-size: 0.85rem; color: #888; letter-spacing: 0.05em; }
+
+    /* Stats */
+    .stats { display: flex; justify-content: center; gap: 40px; margin-bottom: 60px; flex-wrap: wrap; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 2.5rem; font-weight: 700; color: #a78bfa; line-height: 1; }
+    .stat-label { font-size: 0.75rem; color: #888; margin-top: 6px; letter-spacing: 0.05em; }
+
+    /* Tabs */
+    .tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 40px; flex-wrap: wrap; }
+    .tab-btn {
+      padding: 8px 20px; border-radius: 100px; border: 1px solid #2a2a3a;
+      background: transparent; color: #888; font-size: 0.85rem; cursor: pointer;
+      transition: all 0.2s; font-family: inherit;
+    }
+    .tab-btn:hover { border-color: #a78bfa55; color: #ccc; }
+    .tab-btn.active { background: #a78bfa15; border-color: #a78bfa66; color: #a78bfa; }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* Protocol */
+    .protocol-panel {
+      max-width: 760px; margin: 0 auto 40px;
+      background: #16161e; border: 1px solid #2a2a3a; border-radius: 16px; padding: 28px 32px;
+    }
+    .protocol-panel h2 { font-size: 0.8rem; letter-spacing: 0.15em; color: #a78bfa; text-transform: uppercase; margin-bottom: 20px; }
+    .rule-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .rule-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 0.92rem; line-height: 1.6; }
+    .rule-num {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: #a78bfa22; border: 1px solid #a78bfa66; color: #a78bfa;
+      display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700;
+    }
+
+    /* Profile cards */
+    .profile-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 680px) { .profile-grid { grid-template-columns: 1fr; } }
+
+    .profile-card {
+      background: #16161e; border: 1px solid #2a2a3a; border-radius: 16px; padding: 24px;
+    }
+    .profile-card.takuma { border-top: 3px solid #82b366; }
+    .profile-card.moeko { border-top: 3px solid #b85450; }
+
+    .profile-name { font-size: 1.3rem; font-weight: 700; margin-bottom: 18px; }
+    .profile-card.takuma .profile-name { color: #82b366; }
+    .profile-card.moeko .profile-name { color: #f8cecc; }
+
+    .profile-section { margin-bottom: 16px; }
+    .profile-section-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #555; margin-bottom: 8px; }
+    .profile-item { font-size: 0.85rem; color: #bbb; line-height: 1.6; margin-bottom: 4px; padding-left: 14px; position: relative; }
+    .profile-item::before { content: '·'; position: absolute; left: 0; color: #555; }
+
+    .key-insight {
+      background: #a78bfa08; border: 1px solid #a78bfa22; border-radius: 10px;
+      padding: 12px 16px; font-size: 0.85rem; color: #c0b0f0; line-height: 1.6; margin-top: 10px;
+    }
+
+    /* Gap table */
+    .gap-table { max-width: 760px; margin: 20px auto 0; }
+    .gap-table table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .gap-table th { background: #16161e; color: #888; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 14px; text-align: left; border-bottom: 1px solid #2a2a3a; }
+    .gap-table td { padding: 10px 14px; border-bottom: 1px solid #1a1a22; line-height: 1.5; }
+    .gap-table tr:last-child td { border-bottom: none; }
+    .col-t { color: #b0d4a8; }
+    .col-m { color: #f8cecc; }
+
+    /* Timeline */
+    .timeline-wrap { max-width: 760px; margin: 0 auto; }
+    .timeline-wrap > h2 { font-size: 0.8rem; letter-spacing: 0.15em; color: #555; text-transform: uppercase; margin-bottom: 32px; text-align: center; }
+
+    .episode { position: relative; padding-left: 48px; margin-bottom: 48px; }
+    .episode::before {
+      content: ''; position: absolute; left: 16px; top: 36px; width: 2px;
+      background: linear-gradient(to bottom, #a78bfa44, transparent); height: calc(100% + 16px);
+    }
+    .episode:last-child::before { display: none; }
+
+    .ep-dot {
+      position: absolute; left: 8px; top: 8px; width: 18px; height: 18px;
+      border-radius: 50%; background: #a78bfa; box-shadow: 0 0 12px #a78bfa88;
+    }
+    .ep-dot.unresolved { background: #888; box-shadow: none; }
+
+    .ep-card { background: #16161e; border: 1px solid #2a2a3a; border-radius: 14px; padding: 24px 28px; }
+
+    .ep-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+    .ep-num { font-size: 0.7rem; color: #a78bfa; background: #a78bfa15; border: 1px solid #a78bfa33; padding: 3px 10px; border-radius: 100px; letter-spacing: 0.08em; }
+    .ep-date { font-size: 0.78rem; color: #666; }
+    .ep-badge { font-size: 0.7rem; padding: 3px 10px; border-radius: 100px; }
+    .ep-badge.resolved { color: #c8ffc0; background: #c8ffc010; border: 1px solid #c8ffc030; }
+    .ep-badge.unresolved { color: #888; background: #88888810; border: 1px solid #88888830; }
+
+    .ep-title { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 20px; }
+
+    .ep-section { margin-bottom: 14px; }
+    .ep-section-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #555; margin-bottom: 8px; }
+
+    .ep-resolution {
+      font-size: 0.9rem; color: #c8ffc0; background: #c8ffc008;
+      border: 1px solid #c8ffc020; border-radius: 8px; padding: 10px 14px; line-height: 1.6;
+    }
+    .ep-resolution.none { color: #666; border-color: #2a2a3a; background: transparent; }
+
+    .learnings { display: flex; flex-direction: column; gap: 8px; }
+    .learning-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #c0c0d0; line-height: 1.5; }
+    .learning-item::before { content: '→'; color: #a78bfa; flex-shrink: 0; margin-top: 1px; }
+
+    .gate-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .gate-badge { font-size: 0.78rem; color: #fbbf24; background: #fbbf2410; border: 1px solid #fbbf2430; padding: 3px 10px; border-radius: 100px; }
+
+    .homework { margin-top: 20px; background: #a78bfa08; border: 1px solid #a78bfa22; border-radius: 10px; padding: 14px 18px; }
+    .homework-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: #a78bfa; margin-bottom: 10px; }
+    .hw-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.85rem; color: #aaa; margin-bottom: 6px; line-height: 1.5; }
+    .hw-check { width: 16px; height: 16px; border: 1px solid #a78bfa55; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+
+    .empty-ep { border: 2px dashed #2a2a3a; border-radius: 14px; padding: 32px; text-align: center; color: #444; font-size: 0.88rem; }
+
+    footer { text-align: center; margin-top: 80px; color: #444; font-size: 0.75rem; letter-spacing: 0.08em; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>拓磨 × 萌子</h1>
+    <p>対話の成長記録 — CONFLICT LOG</p>
+  </header>
+
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">TOTAL EPISODES</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1</div>
+      <div class="stat-label">RESOLVED</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">14</div>
+      <div class="stat-label">LEARNINGS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">ACTIVE RULES</div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('timeline')">Timeline</button>
+    <button class="tab-btn" onclick="showTab('profile')">Profiles</button>
+    <button class="tab-btn" onclick="showTab('protocol')">Protocol</button>
+  </div>
+
+  <!-- TIMELINE TAB -->
+  <div id="tab-timeline" class="tab-content active">
+    <div class="timeline-wrap">
+      <h2>Episode Timeline</h2>
+
+      <!-- #000a -->
+      <div class="episode">
+        <div class="ep-dot unresolved"></div>
+        <div class="ep-card">
+          <div class="ep-meta">
+            <span class="ep-num">#000a</span>
+            <span class="ep-date">時期不明（同居期）</span>
+            <span class="ep-badge unresolved">未解決</span>
+          </div>
+          <div class="ep-title">掃除と命令の形式</div>
+          <div class="ep-section">
+            <div class="ep-section-label">発端</div>
+            <div style="font-size:0.9rem;color:#bbb;">萌子「親に家を借りているなら、掃除をするのが筋。だからあんたも掃除しなあかんで」</div>
+          </div>
+          <div class="ep-section">
+            <div class="ep-section-label">合意した解決策</div>
+            <div class="ep-resolution none">記録なし（自然収束）</div>
+          </div>
+          <div class="ep-section">
+            <div class="ep-section-label">学び</div>
+            <div class="learnings">
+              <div class="learning-item">「要求の正当性」より「要求の提示形式」が衝突の火種になる</div>
+              <div class="learning-item">萌子にとっての「歩み寄り」が、拓磨に「工数最小化（合理化）」として届いた</div>
+              <div class="learning-item">拓磨：理不尽な命令と感じると母親への怒り記憶と連結して増幅することがある</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #000b -->
+      <div class="episode">
+        <div class="ep-dot unresolved"></div>
+        <div class="ep-card">
+          <div class="ep-meta">
+            <span class="ep-num">#000b</span>
+            <span class="ep-date">時期不明（同居期）</span>
+            <span class="ep-badge unresolved">未解決</span>
+          </div>
+          <div class="ep-title">LINEの文体と感情レイヤー</div>
+          <div class="ep-section">
+            <div class="ep-section-label">発端</div>
+            <div style="font-size:0.9rem;color:#bbb;">拓磨「LINEの文面おばちゃんぽいかも」→「チン萎えするなあ」→identity発言</div>
+          </div>
+          <div class="ep-section">
+            <div class="ep-section-label">核心的なすれ違い</div>
+            <div class="ep-resolution none" style="color:#bbb;border-color:#2a2a3a;background:transparent;">
+              萌子：「もういいよ、わかった」＋抱擁 → 感情レイヤーで完了<br>
+              拓磨：「論理が完結していないのに何がわかったのか」→ 困惑<br>
+              萌子：謝罪ループ（怒り→怖い→関係安定化行動）<br>
+              拓磨：謝罪が目的でないため「？？？」
+            </div>
+          </div>
+          <div class="ep-section">
+            <div class="ep-section-label">学び</div>
+            <div class="learnings">
+              <div class="learning-item">感情レイヤーvs言語レイヤー：対話の完了条件が根本的に異なる</div>
+              <div class="learning-item">萌子の謝罪は関係安定化行動（怒り→怖い→見捨てられ不安）。拓磨の目的とは一致しない</div>
+              <div class="learning-item">感情レイヤーで完結：悪意なしと感情的に納得できれば、言語的論点未解決でも「わかった」になる</div>
+              <div class="learning-item">泣き時の行動制約：「黙って抱きしめる」のみが正解となる構造は不平等（拓磨の問題提起）</div>
+              <div class="learning-item">「認知負荷」と同様に「一時感情負荷」を設計に組み込む必要がある（拓磨の洞察）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #000c -->
+      <div class="episode">
+        <div class="ep-dot unresolved"></div>
+        <div class="ep-card">
+          <div class="ep-meta">
+            <span class="ep-num">#000c</span>
+            <span class="ep-date">2026-03-15 前後</span>
+            <span class="ep-badge unresolved">構造理解</span>
+          </div>
+          <div class="ep-title">コミュニケーションフォーカスの構造化</div>
+          <div class="ep-section">
+            <div class="ep-section-label">得た核心的洞察</div>
+            <div class="ep-resolution none" style="color:#c0b0f0;border-color:#a78bfa22;background:#a78bfa05;">
+              二人のコミュニケーションのフォーカスが根本的に異なる<br>
+              拓磨：言葉で明示的に目的・論点を設定する<br>
+              萌子：心理状態が常に目的/フォーカス。相手動機も感情から推定する
+            </div>
+          </div>
+          <div class="ep-section">
+            <div class="ep-section-label">萌子のメタ認知（本人確認済み）</div>
+            <div class="learnings">
+              <div class="learning-item">会話textよりそのtextを発した「理由」に論点が無意識に移りやすい</div>
+              <div class="learning-item">内部で納得したら返答なしに話題が移ることがある（「これは私の癖だね」）</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REF: 見捨てられ不安 -->
+      <div class="episode">
+        <div class="ep-dot unresolved"></div>
+        <div class="ep-card">
+          <div class="ep-meta">
+            <span class="ep-num">REF</span>
+            <span class="ep-date">時期不明</span>
+            <span class="ep-badge unresolved">観測ログ</span>
+          </div>
+          <div class="ep-title">かわいい論・見捨てられ不安の構造</div>
+          <div class="ep-section">
+            <div class="ep-section-label">観測された構造</div>
+            <div style="font-size:0.9rem;color:#bbb;line-height:1.6;">
+              美醜の話 → 萌子が「望まぬ自己像（美醜に囚われた人間）」を突きつけられたと感じる<br>
+              → 「そんな人間をなぜ選んだの？」という確認衝動（関係存続の強迫的確認行動）<br>
+              → 萌子自身が愛着障害由来の見捨てられ不安と分析中
+            </div>
+          </div>
+          <div class="ep-section">
+            <div class="ep-section-label">学び</div>
+            <div class="learnings">
+              <div class="learning-item">怒りに見える反応が実は「関係が壊れないことの確認」である可能性</div>
+              <div class="learning-item">容姿・自己像に触れる話題は見捨てられ不安のトリガー</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- #001 -->
+      <div class="episode">
+        <div class="ep-dot"></div>
+        <div class="ep-card">
+          <div class="ep-meta">
+            <span class="ep-num">#001</span>
+            <span class="ep-date">2026-03-23</span>
+            <span class="ep-badge resolved">解決済み</span>
+          </div>
+          <div class="ep-title">お茶の入れ方</div>
+          <div class="ep-section">
+            <div class="ep-section-label">防衛ゲート（今回観測されたもの）</div>
+            <div class="gate-list">
+              <span class="gate-badge">外部データ要求「調べてみよう」</span>
+              <span class="gate-badge">自分が損する妥協案「時給換算2分」</span>
+              <span class="gate-badge">感情的洪水（涙）</span>
+              <span class="gate-badge">離脱（キッチンへ移動）</span>
+            </div>
+          </div>
+          <div class="ep-section">
+            <div class="ep-section-label">合意した解決策</div>
+            <div class="ep-resolution">
+              <strong>作者ルール採用</strong>：各自が作る時は自分の方法でOK<br>
+              拓磨が作る時→水 / 萌子が作る時→お湯
+            </div>
+          </div>
+          <div class="ep-section">
+            <div class="ep-section-label">学び</div>
+            <div class="learnings">
+              <div class="learning-item">利権シフトのトリガーは「正当性の非対称」——感覚的要望に根拠を求めた瞬間に始まる</div>
+              <div class="learning-item">多数決思考は防衛反応（「他に合理的手段がない」という萌子の証言）</div>
+              <div class="learning-item">感情的洪水後は生理的回復に最低20分。分析要求は機能しない</div>
+              <div class="learning-item">枠組みを一方的に宣言すると、結論が正しくても相手の主体性を奪う</div>
+            </div>
+          </div>
+          <div class="homework">
+            <div class="homework-label">Next Homework</div>
+            <div class="hw-item"><span class="hw-check"></span>感覚の主張に対して根拠を求めなかったか</div>
+            <div class="hw-item"><span class="hw-check"></span>防衛ゲートを通過した時に一時停止を発動できたか</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="empty-ep">次のエピソードを conflict_log.md に追記すると、ここに表示されます</div>
+    </div>
+  </div>
+
+  <!-- PROFILE TAB -->
+  <div id="tab-profile" class="tab-content">
+    <div class="profile-grid">
+      <div class="profile-card takuma">
+        <div class="profile-name">拓磨</div>
+        <div class="profile-section">
+          <div class="profile-section-label">評価関数</div>
+          <div class="profile-item">感情を良い方向に導くシステムが設計できているか</div>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-label">コミュニケーションスタイル</div>
+          <div class="profile-item">言語・論点・根本原因にフォーカス</div>
+          <div class="profile-item">「〜と思う」で主観を明示する習慣</div>
+          <div class="profile-item">分析先行型。結論を先に提示しがち</div>
+          <div class="profile-item">枠組みを一方的に宣言する傾向</div>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-label">衝突時の傾向</div>
+          <div class="profile-item">感情的洪水後も分析を続けようとする</div>
+          <div class="profile-item">謝罪を受け取ることが苦手</div>
+          <div class="profile-item">「折れる」「覚えておいて」で帳簿を作りがち</div>
+          <div class="profile-item">理不尽な命令感と母親記憶が連結することがある</div>
+        </div>
+        <div class="key-insight">💡 自分の洞察：認知負荷と同様に「一時感情負荷」も設計変数に含める</div>
+      </div>
+
+      <div class="profile-card moeko">
+        <div class="profile-name">萌子</div>
+        <div class="profile-section">
+          <div class="profile-section-label">評価関数</div>
+          <div class="profile-item">表情・雰囲気などの非言語シグナル</div>
+          <div class="profile-item">感情状態の共有・確認が対話の目的</div>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-label">コミュニケーションスタイル</div>
+          <div class="profile-item">心理状態が常にフォーカス</div>
+          <div class="profile-item">相手の発言動機も「感情から来ている」と推定しやすい</div>
+          <div class="profile-item">内部で納得したら返答なしに話題が移ることがある</div>
+          <div class="profile-item">見捨てられ不安（愛着障害由来）</div>
+        </div>
+        <div class="profile-section">
+          <div class="profile-section-label">衝突時の傾向</div>
+          <div class="profile-item">主張手段が逓減（能動→防衛→多数決→譲歩→洪水→感情完了→謝罪→離脱）</div>
+          <div class="profile-item">感情レイヤーで完了させようとする（抱擁・「もういいよ」→ 言語論点が未解決でも完了）</div>
+          <div class="profile-item">謝罪ループ：相手の怒り→怖い→見捨てられ不安→関係安定化として謝る</div>
+          <div class="profile-item">容姿・自己像に触れる話題で見捨てられ不安が発火する（確認衝動）</div>
+        </div>
+        <div class="key-insight">💡 本人認識：多数決は「好き」でなく「他に手段がない」から。返答なしに話題移行は自分の癖と認識。<br>💡 見捨てられ不安（愛着由来）：美醜の話題で「そんな人間をなぜ選んだの？」という確認衝動。これは怒りではなく関係存続の強迫的確認行動。</div>
+      </div>
+    </div>
+
+    <div class="gap-table">
+      <h2 style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:#555;text-align:center;margin:40px 0 16px;">Communication Gap</h2>
+      <table>
+        <tr>
+          <th>場面</th>
+          <th class="col-t">拓磨の発信</th>
+          <th class="col-m">萌子の受信</th>
+        </tr>
+        <tr>
+          <td>感覚的要望に事実で返す</td>
+          <td class="col-t">客観的な情報提供</td>
+          <td class="col-m">「自分の感覚は非合理とされた」</td>
+        </tr>
+        <tr>
+          <td>根本原因分析を続ける</td>
+          <td class="col-t">恒久策を作ろうとしている</td>
+          <td class="col-m">「今の感情（焦り）を解消しようとしている」</td>
+        </tr>
+        <tr>
+          <td>枠組みを宣言する</td>
+          <td class="col-t">最適解の提示</td>
+          <td class="col-m">「私が参加できていない判決が出た」</td>
+        </tr>
+        <tr>
+          <td>洪水後に振り返りを求める</td>
+          <td class="col-t">普段通りの振り返り</td>
+          <td class="col-m">「正解を答えないと終わらない試験」</td>
+        </tr>
+        <tr>
+          <td>萌子が謝る</td>
+          <td class="col-t">「謝罪が目的でないのに何が起きているのか？」</td>
+          <td class="col-m">怒り→怖い→見捨てられ不安→関係安定化行動</td>
+        </tr>
+        <tr>
+          <td>拓磨が一時的に怒りを感じる</td>
+          <td class="col-t">イベントへの一時リアクション（本人には些事）</td>
+          <td class="col-m">「怒ってる→怖い」→ 不安の源泉として大きく受信</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- PROTOCOL TAB -->
+  <div id="tab-protocol" class="tab-content">
+    <div class="protocol-panel" style="max-width:760px;margin:0 auto 32px;">
+      <h2>Current Protocol — 現在の対話合意</h2>
+      <ul class="rule-list">
+        <li>
+          <span class="rule-num">1</span>
+          <span><strong>感覚は尊重し、事実と分離する。</strong>好みや感覚の主張に根拠は不要。「お湯がいい」「水でも気にならない」はどちらも等価な主張。</span>
+        </li>
+        <li>
+          <span class="rule-num">2</span>
+          <span><strong>防衛ゲート通過時は構造化された一時停止を発動する。</strong>「一回休憩しよう。〇分後にまた話そう」のみ。分析・反省の促しは不要。</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="protocol-panel" style="max-width:760px;margin:0 auto;">
+      <h2>Defense Gate — 防衛ゲートの定義</h2>
+      <ul class="rule-list">
+        <li>
+          <span class="rule-num" style="background:#fbbf2415;border-color:#fbbf2466;color:#fbbf24;">!</span>
+          <span>相手が外部データに頼り始める（「調べてみよう」「みんなはどうしてる」等）</span>
+        </li>
+        <li>
+          <span class="rule-num" style="background:#fbbf2415;border-color:#fbbf2466;color:#fbbf24;">!</span>
+          <span>相手が自分が損する妥協案を出し始める</span>
+        </li>
+        <li>
+          <span class="rule-num" style="background:#fbbf2415;border-color:#fbbf2466;color:#fbbf24;">!</span>
+          <span>同じ主張を繰り返し始める</span>
+        </li>
+        <li>
+          <span class="rule-num" style="background:#fbbf2415;border-color:#fbbf2466;color:#fbbf24;">!</span>
+          <span>涙（洪水状態）— 理想は涙の前段階での検知。ただし涙もゲートとして機能させる</span>
+        </li>
+      </ul>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid #2a2a3a;font-size:0.85rem;color:#888;">
+        一時停止の発動フォーマット：<span style="color:#e8e8ec;font-weight:600;">「一回休憩しよう。〇分後にまた話そう」</span><br>
+        <span style="font-size:0.8rem;">理由説明・反省促し・分析は不要。再開時刻を明示することで「放置」でなく「継続」を示す。</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Last updated: 2026-03-23 &nbsp;|&nbsp; Reference: couple_profile.md / conflict_log.md
+  </footer>
+
+  <script>
+    function showTab(name) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById('tab-' + name).classList.add('active');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
